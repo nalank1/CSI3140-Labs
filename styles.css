@@ -1,0 +1,50 @@
+/* CSS file */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.w3-container {
+    padding: 16px;
+}
+
+.w3-card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.w3-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.w3-text-grey {
+    color: #757575;
+}
+
+.w3-text-teal {
+    color: #3d85c6;
+}
+
+.w3-padding-16 {
+    padding: 16px;
+}
+
+.w3-opacity {
+    opacity: 0.6;
+}
+
+.w3-margin-right {
+    margin-right: 16px;
+}
+
+.w3-xxlarge {
+    font-size: 36px;
+}
+
+.w3-hover-opacity:hover {
+    opacity: 0.5;
+}
+
+footer {
+    padding: 16px;
+}
