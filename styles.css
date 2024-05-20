@@ -1,8 +1,5 @@
 /* CSS file */
 
-body {
-    font-family: Arial, sans-serif;
-}
 
 .w3-container {
     padding: 16px;
@@ -48,3 +45,5 @@ body {
 footer {
     padding: 16px;
 }
+
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
