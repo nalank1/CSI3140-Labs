@@ -21,6 +21,7 @@ function createGame(n) {
 
 let score = 0;
 let level = 1;
+let hasFruit = false;
 
 function updateScore() {
     let scoreDiv = document.getElementById('score');
@@ -45,6 +46,20 @@ function moveLeft(game) {
             score += 10;
             updateScore();
             game[pacmanPosition - 1] = ' ';
+            hasFruit = true;
+        }
+
+        if(game[pacmanPosition - 1] === '^'){
+            if(hasFruit){
+                score += 50;
+                updateScore();
+                game[pacmanPosition - 1] = ' ';
+            }
+            else{
+                //pacman dies
+                console.log('Game over!');
+                return;
+            }
         }
         game[pacmanPosition] = ' ';
         game[pacmanPosition - 1] = 'C';
@@ -72,6 +87,19 @@ function moveRight(game) {
             score += 10;
             updateScore();
             game[pacmanPosition + 1] = ' ';
+        }
+
+        if(game[pacmanPosition + 1] === '^'){
+            if(hasFruit){
+                score += 50;
+                updateScore();
+                game[pacmanPosition + 1] = ' ';
+            }
+            else{
+                //pacman dies
+                console.log('Game over!');
+                return;
+            }
         }
         game[pacmanPosition] = ' ';
         game[pacmanPosition + 1] = 'C';
