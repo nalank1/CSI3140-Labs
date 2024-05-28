@@ -47,6 +47,11 @@ function moveLeft(game) {
             updateScore();
             game[pacmanPosition - 1] = ' ';
             hasFruit = true;
+
+            setTimeout(function(){
+                hasFruit = false;
+            
+            }, 10000); //hasFruit resets after 10 seconds
         }
 
         if(game[pacmanPosition - 1] === '^'){
