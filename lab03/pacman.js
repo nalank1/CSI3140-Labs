@@ -37,11 +37,13 @@ function moveLeft(game) {
     if (pacmanPosition > 0) {
         if (game[pacmanPosition - 1] === '.') {
             score++;
+            updateScore();
             game[pacmanPosition - 1] = ' ';
         }
 
         if(game[pacmanPosition - 1] === '@'){
             score += 10;
+            updateScore();
             game[pacmanPosition - 1] = ' ';
         }
         game[pacmanPosition] = ' ';
@@ -50,6 +52,7 @@ function moveLeft(game) {
 
     if (!game.includes(' ')) {
         level++;
+        updateLevel(); 
         game = createGame(game.length);
     }
 
@@ -61,11 +64,13 @@ function moveRight(game) {
     if (pacmanPosition < game.length - 1) {
         if (game[pacmanPosition + 1] === '.') {
             score++;
+            updateScore();
             game[pacmanPosition + 1] = ' ';
         }
 
         if(game[pacmanPosition + 1] === '@'){
             score += 10;
+            updateScore();
             game[pacmanPosition + 1] = ' ';
         }
         game[pacmanPosition] = ' ';
@@ -74,6 +79,7 @@ function moveRight(game) {
 
     if (!game.includes('.')) {
         level++;
+        updateLevel();
         game = createGame(game.length);
     }
 
