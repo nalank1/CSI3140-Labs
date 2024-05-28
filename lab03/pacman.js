@@ -22,17 +22,33 @@ function createGame(n) {
 let score = 0;
 let level = 1;
 
+function updateScore() {
+    let scoreDiv = document.getElementById('score');
+    scoreDiv.textContent = 'Score: ' + score;
+}
+
+function updateLevel(){
+    let levelDiv = document.getElementById('level');
+    levelDiv.textContent = 'Level: ' + level;
+}
+
 function moveLeft(game) {
     let pacmanPosition = game.indexOf('C');
     if (pacmanPosition > 0) {
         if (game[pacmanPosition - 1] === '.') {
             score++;
+            game[pacmanPosition - 1] = ' ';
         }
-        game[pacmanPosition] = '.';
+
+        if(game[pacmanPosition - 1] === '@'){
+            score += 10;
+            game[pacmanPosition - 1] = ' ';
+        }
+        game[pacmanPosition] = ' ';
         game[pacmanPosition - 1] = 'C';
     }
 
-    if (!game.includes('.')) {
+    if (!game.includes(' ')) {
         level++;
         game = createGame(game.length);
     }
@@ -45,8 +61,14 @@ function moveRight(game) {
     if (pacmanPosition < game.length - 1) {
         if (game[pacmanPosition + 1] === '.') {
             score++;
+            game[pacmanPosition + 1] = ' ';
         }
-        game[pacmanPosition] = '.';
+
+        if(game[pacmanPosition + 1] === '@'){
+            score += 10;
+            game[pacmanPosition + 1] = ' ';
+        }
+        game[pacmanPosition] = ' ';
         game[pacmanPosition + 1] = 'C';
     }
 
@@ -57,6 +79,7 @@ function moveRight(game) {
 
     return game;
 }
+
 
 let direction = 1;
 
@@ -85,8 +108,10 @@ function renderGame(game){
             cellElement.classList.add('ghost');
         } else if (cell === '@') {
             cellElement.classList.add('fruit');
-        } else {
+        } else if (cell === '.'){
             cellElement.classList.add('pellet');
+        } else{
+            cellElement.classList.add('eaten-pellet');
         }
         gameContainer.appendChild(cellElement);
     });
