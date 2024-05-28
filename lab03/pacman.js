@@ -22,9 +22,13 @@ function createGame(n){
 
 console.log(createGame(10));
 
+let score = 0;
 function moveLeft(game){
     let pacmanPosition = game.indexOf('C');
     if(pacmanPosition > 0){
+        if(game[pacmanPosition - 1] === '.'){
+            score++;
+        }
         game[pacmanPosition] = '.'; //pacman is not eating that's why we assign pellet
         game[pacmanPosition - 1] = 'C';
     }
@@ -34,6 +38,9 @@ function moveLeft(game){
 function moveRight(game){
     let pacmanPosition = game.indexOf('C');
     if(pacmanPosition < game.length - 1){
+        if(game[pacmanPosition + 1] === '.'){
+            score++;
+        }
         game[pacmanPosition] = '.';
         game[pacmanPosition + 1] = 'C';
     }
