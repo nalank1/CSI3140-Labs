@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pacman</title>
+    <style>
+        *{
+            text-align: center;
+        }
+        .game-cell{
+            height:50px;
+            width:50px;
+            border:1px solid  black;
+            display:inline-flex;
+            text-align: center;
+        }
+        .pacman{
+            background-color:yellow;
+        }
+        .ghost{
+            background-color:red;
+        }
+        .pellet{
+            background-color: rgb(12, 12, 242);
+
+        }
+        .fruit{
+            background-color: rgb(235, 8, 243);
+        
+        }
+        .eaten-pellet{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id = "game"></div>
+    <div id="score">Score: 0</div>
+    <div id="level">Level: 1</div>
+    <script src = "pacman.js"></script>
+</body>
+</html>
