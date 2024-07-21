@@ -4,6 +4,7 @@ body {
 }
 canvas {
     display: block;
+    align-content: center;
 }
 #scoreboard {
     position: absolute;

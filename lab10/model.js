@@ -39,7 +39,7 @@ var Scene = (function() {
     }
 
     function fullScreenProperties() {
-        var ratio = 0.8;
+        var ratio = 1;
         return {
             x: window.innerWidth * ratio,
             y: window.innerHeight * ratio
@@ -134,6 +134,14 @@ var Scene = (function() {
         this.health -= 10;
         if (this.health < 0) this.health = 0;
         updateHealth();
+
+        if (this.health === 0) {
+            alert("Game Over!");
+            this.score = 0;
+            this.health = 100;
+            updateScore();
+            updateHealth();
+        }
     }
 
     return entity;
