@@ -39,5 +39,5 @@ When the player's health reaches zero, the game displays a "Game Over!" alert, r
 To integrate this module into your game, include `model.js` in your project and ensure it is loaded into your game's HTML file. Instantiate entities as needed and call the game loop to start the game.
 
 
-[!image](lab10/docs/assets/secondpage.PNG)
-[!image](lab10/docs/assets/thirdpage.PNG)
+[!image](docs/assets/secondpage.PNG)
+[!image](docs/assets/thirdpage.PNG)
