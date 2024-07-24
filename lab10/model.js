@@ -38,6 +38,63 @@ var Scene = (function() {
         }
     }
 
+    class Coin {
+        constructor(x, y, size) {
+            this.x = x;
+            this.y = y;
+            this.size = size;
+            this.color = "gold";
+        }
+
+        draw(context) {
+            context.fillStyle = this.color;
+            context.beginPath();
+            context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            context.fill();
+        }
+
+        update() {}
+
+        checkCollision(player) {
+            if(!this.collected &&
+                player.x < this.x + this.size &&
+                player.x + player.size > this.x &&
+                player.y < this.y + this.size &&
+                player.y + player.size > this.y) {
+                this.collected = true;
+                entity.incrementScore();
+            }
+        }
+    }
+
+    class Cloud {
+        constructor(x, y, width, height) {
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
+            this.color = "white";
+            this.speed = 1; // Cloud movement speed
+        }
+
+        draw(context) {
+            context.fillStyle = this.color;
+            context.beginPath();
+            context.arc(this.x, this.y, this.width / 2, Math.PI * 0.5, Math.PI * 1.5);
+            context.arc(this.x + this.width / 2, this.y - this.height / 2, this.height / 2, Math.PI * 1, Math.PI * 0);
+            context.arc(this.x + this.width, this.y, this.width / 2, Math.PI * 1.5, Math.PI * 0.5);
+            context.closePath();
+            context.fill();
+        }
+
+        update() {
+            this.x -= this.speed;
+            if (this.x + this.width < 0) {
+                this.x = entity.x; // Reset cloud position when it goes off screen
+            }
+        }
+    }
+
     function fullScreenProperties() {
         var ratio = 1;
         return {
@@ -97,6 +154,28 @@ var Scene = (function() {
         // Create player
         this.player = new Player(50, this.y * 0.9 - 50, 50);
 
+        // Create coins
+        this.coins = [];
+        var coinPositions = [
+            {x: 200, y: this.y * 0.8},
+            {x: 400, y: this.y * 0.7},
+            {x: 600, y: this.y * 0.8}
+        ];
+        coinPositions.forEach(pos => {
+            this.coins.push(new Coin(pos.x, pos.y, 10));
+        });
+
+        // Create clouds
+        this.clouds = [];
+        var cloudPositions = [
+            {x: 100, y: 100},
+            {x: 300, y: 150},
+            {x: 500, y: 100}
+        ];
+        cloudPositions.forEach(pos => {
+            this.clouds.push(new Cloud(pos.x, pos.y, 80, 50));
+        });
+
         // Draw multiple trees
         var treePositions = [150, 300, 450, 600, 750];
         treePositions.forEach(function(pos) {
@@ -116,6 +195,17 @@ var Scene = (function() {
         var treePositions = [150, 300, 450, 600, 750];
         treePositions.forEach(function(pos) {
             drawTree(pos);
+        });
+
+        this.coins.forEach(coin => {
+            coin.update();
+            coin.draw(this.context);
+        });
+
+        // Draw and update clouds
+        this.clouds.forEach(cloud => {
+            cloud.update();
+            cloud.draw(this.context);
         });
 
         // Update and draw player
