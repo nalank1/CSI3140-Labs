@@ -35,9 +35,7 @@ The game loop is initiated through `requestAnimationFrame`, calling the `gameLoo
 ## Game Over
 When the player's health reaches zero, the game displays a "Game Over!" alert, resets the score and health to their initial states, and updates the respective displays.
 
-## Usage
-To integrate this module into your game, include `model.js` in your project and ensure it is loaded into your game's HTML file. Instantiate entities as needed and call the game loop to start the game.
 
 
-[!image](docs/assets/secondpage.PNG)
-[!image](docs/assets/thirdpage.PNG)
+[Screenshot 1](docs/assets/secondpage.PNG)
+[Screenshot 2](docs/assets/thirdpage.PNG)
